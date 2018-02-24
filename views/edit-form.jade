@@ -1,0 +1,32 @@
+html
+	include ./head.jade
+	
+	body
+		div.container
+			div.movie-form.text-left
+				form(name="edit-form", method="post", action="/api/edit-form")
+					
+					input(type="hidden" name="id" value=movie._id class="form-control")
+					
+					label(for='title',class='control-label') Movie Title
+					input(type="text" name="title" value=movie.title class="form-control")
+
+					label(for='relase_date',class='control-label') Relase Date
+					input(type="text" name="relase_date" value=movie.relase_date class="form-control")
+
+					label(for='genre',class='control-label') Genre
+					input(type="text" name="genre" value=movie.genre for='genre' class="form-control")
+
+					label(for='description',class='control-label') Description
+					textarea( name="description", rows="6", cols="40" )
+
+					label(for='rating',class='control-label') Rating
+					input(type="text" name="rating" value=movie.rating class="form-control")
+
+					label(for='image_url',class='control-label') Poster Image
+					input(type="text" name="image_url" value=movie.image_url class="form-control")
+
+					button.btn.btn-default(type="submit") Edit Movie
+		div
+			button.btn.btn-default.back-button 
+				a(href="/api/movies",type="hidden") Back

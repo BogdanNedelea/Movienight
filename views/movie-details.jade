@@ -1,0 +1,60 @@
+doctype
+
+html
+	include ./head.jade
+
+
+	body
+		div.container
+			div.row
+				div.col-xs-8.col-xs-offset-2.singlemovie-container
+					div.col-xs-6.detailsImageBox
+						img(src= "#{movie.image_url}" class="movie-image")
+					div.col-xs-6.detailsImageBox
+						p Title:	#{movie.title}
+						p Relase Date:	#{movie.relase_date}
+						p Genre:	#{movie.genre}
+						p Descirption:	#{movie.description}
+
+					div.col-xs-2
+						div.col-xs-6.no-padding
+							button.btn.btn-success
+								i.fa.fa-thumbs-up
+							.p-success.text-left +20
+						div.col-xs-6.no-padding
+							button.btn.btn-danger
+								i.fa.fa-thumbs-down
+							.p-danger.text-left +5
+
+					div.col-xs-2.actionbtns-group 
+						button.btn.btn-default.my-btn
+							a(href='/api/movies') Back
+						button.btn.btn-default.my-btn
+							a(href='/api/edit-form/'+'#{movie._id}') Edit
+						button.btn.btn-default.my-btn(onclick='deleteMovie("#{movie._id}")') Delete
+						
+					div.col-xs-3.doughnut-container
+						div.doughnut 
+							p #{movie.rating}
+
+script(type="text/javascript").
+			var ratingNumber = #{movie.rating};
+			if(ratingNumber < 5 )
+				$(".doughnut").css('border-color', '#d9534f', '!important');
+			else if ( ratingNumber >= 5 && ratingNumber <= 7)
+				$(".doughnut").css('border-color', '#f0ad4e', '!important');
+			else
+				$(".doughnut").css('border-color', 'rgb(111, 219, 111)', '!important');
+
+
+script(type="text/javascript").
+			function deleteMovie(movieId){
+			console.log(movieId);
+			$.ajax({
+					url: '/api/movies/'+ movieId,
+					type: 'DELETE'
+				}).always(function() {
+					console.log("Dan");
+					window.location.href = "/api/movies";
+				});
+			};

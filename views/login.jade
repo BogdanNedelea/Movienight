@@ -1,0 +1,14 @@
+html
+	include ./head.jade
+	
+	body
+		div.container
+			div.movie-form.text-center
+				form(name="login-form", method="post", action="/api/login")
+					label(for='username',class='control-label') Username
+					input(type="text" name="username" class="form-control" placeholder="...")
+
+					label(for='password',class='control-label') Password
+					input(type="text" name="password" class="form-control" placeholder="...")
+
+					button.btn.btn-default(type="submit") Log In

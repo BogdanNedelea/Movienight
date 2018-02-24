@@ -1,0 +1,17 @@
+{
+  "name": "movienight",
+  "version": "1.0.0",
+  "description": "Movie Night project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "jade": "^1.11.0",
+    "mongoose": "*"
+  },
+  "author": "Bogdan Nedelea",
+  "license": "ISC"
+}

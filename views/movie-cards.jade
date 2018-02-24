@@ -1,0 +1,15 @@
+html
+	include ./head.jade
+	
+	body
+		div.container.content
+			div.row.movie-container
+				each movie, m in movies
+					div.movie-box.col-xs-3.col-md-3.col-lg-3
+						div.movie-title 
+							a(href='/movies/'+'#{movie._id}') #{movie.title}
+						img(src= "#{movie.image_url}" class="movie-image")
+
+
+			button.btn.btn-default.back-button 
+				a(href='/') Back

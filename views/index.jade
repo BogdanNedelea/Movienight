@@ -1,0 +1,22 @@
+doctype
+
+html
+	include ./head.jade
+	
+	body
+		div.container
+			div#search-div
+				h1 Your movie, my thoughts !
+				form(name="search-movie", method="get", action="api/search")
+					input(type="text" name="title" class="form-control" id="search-input" placeholder="...")
+			div
+				button.btn.btn-default.back-button 
+					a(href="/api/movie-form",type="hidden") Add Movie
+
+
+script(type="text/javascript").
+		$("#id_of_textbox").keyup(function(event){
+			if(event.keyCode == 13){
+			$("#id_of_button").click();
+			}
+		})
